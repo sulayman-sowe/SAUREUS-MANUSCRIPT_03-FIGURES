@@ -1,0 +1,31 @@
+Virulence Gene,BC (%),NPS (%),Odds Ratio (95% CI),P-Value
+"agrA,agrB,agrC,agrD",100,94.1,Inf/Zero,Separation
+aur,100,100,N/A,Invariant
+bap,0,0,N/A,Invariant
+cap operon,44.4,8.8,8.27 (1.41-48.53),0.019
+chp,55.6,88.2,0.12 (0.01-0.96),0.045
+"clfA,clfB",22.2,26.5,0.53 (0.04-7.55),0.643
+cna,77.8,55.9,2.75 (2.72-2.77),< 0.001
+"coa,vwb",100,97.1,Inf/Zero,Separation
+ebpS,100,97.1,Inf/Zero,Separation
+"eta,etb",66.7,35.3,4.02 (0.74-21.71),0.106
+"fnbA,fnbB",100,97.1,Inf/Zero,Separation
+hla/hly,100,97.1,Inf/Zero,Separation
+hlb,100,97.1,Inf/Zero,Separation
+hld,33.3,8.8,5.21 (5.03-5.39),< 0.001
+"hlg,lukS-PV,lukF-PV",100,94.1,Inf/Zero,Separation
+hysA,66.7,88.2,0.27 (0.04-1.97),0.195
+"icaA,icaB,icaC,icaD",100,100,N/A,Invariant
+"isdA,isdB,isdC",100,94.1,Inf/Zero,Separation
+lip,100,100,N/A,Invariant
+lipoteichoic acid,100,100,N/A,Invariant
+nuc,100,100,N/A,Invariant
+peptidoglycan,100,100,N/A,Invariant
+"psmα, psmβ",0,0,N/A,Invariant
+"saeR,saeS",100,97.1,Inf/Zero,Separation
+sak,66.7,58.8,3.64 (0.1-133.03),0.481
+sarA,100,100,N/A,Invariant
+"sea-e, seg-sei",100,100,N/A,Invariant
+"sfa,sfb",11.1,5.9,2 (0.16-24.92),0.59
+spa,100,100,N/A,Invariant
+tst,11.1,0,Inf/Zero,Separation
