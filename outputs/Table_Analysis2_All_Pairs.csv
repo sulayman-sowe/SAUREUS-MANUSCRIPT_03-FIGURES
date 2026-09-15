@@ -1,31 +1,31 @@
-"Virulence Gene","BC (%)","NPS (%)","Odds Ratio (95% CI)","P-Value"
-"agrA,agrB,agrC,agrD",97.1,98.1,"0.65 (0.06-7.37)","0.726"
-"aur",100,100,"N/A","Invariant"
-"bap",0,0,"N/A","Invariant"
-"cap operon",42.9,15,"11.44 (2.83-46.2)","< 0.001"
-"chp",60,79.4,"0.21 (0.07-0.62)","0.005"
-"clfA,clfB",25.7,21.5,"1.11 (0.38-3.28)","0.85"
-"cna",80,53.3,"4.46 (1.52-13.07)","0.006"
-"coa,vwb",100,98.1,"Inf/Zero","Separation"
-"ebpS",91.4,93.5,"0.78 (0.17-3.49)","0.744"
-"eta,etb",45.7,40.2,"1.55 (0.63-3.8)","0.343"
-"fnbA,fnbB",97.1,95.3,"1.67 (0.19-14.77)","0.646"
-"hla/hly",100,93.5,"Inf/Zero","Separation"
-"hlb",100,94.4,"Inf/Zero","Separation"
-"hld",28.6,15,"3.12 (0.96-10.14)","0.059"
-"hlg,lukS-PV,lukF-PV",100,94.4,"Inf/Zero","Separation"
-"hysA",71.4,86,"0.3 (0.09-0.98)","0.045"
-"icaA,icaB,icaC,icaD",97.1,100,"Inf/Zero","Separation"
-"isdA,isdB,isdC",100,94.4,"Inf/Zero","Separation"
-"lip",100,100,"N/A","Invariant"
-"lipoteichoic acid",100,100,"N/A","Invariant"
-"nuc",100,100,"N/A","Invariant"
-"peptidoglycan",97.1,100,"Inf/Zero","Separation"
-"psmα, psmβ",0,0,"N/A","Invariant"
-"saeR,saeS",97.1,94.4,"2.02 (0.23-17.38)","0.522"
-"sak",82.9,65.4,"3.97 (1.14-13.85)","0.031"
-"sarA",97.1,99.1,"0.32 (0.02-5.27)","0.426"
-"sea-e, seg-sei",97.1,98.1,"0.65 (0.06-7.37)","0.726"
-"sfa,sfb",14.3,6.5,"2.77 (0.66-11.7)","0.164"
-"spa",97.1,99.1,"0.32 (0.02-5.27)","0.426"
-"tst",8.6,0.9,"9.94 (1-98.87)","0.05"
+Virulence Gene,BC (%),NPS (%),Odds Ratio (95% CI),P-Value
+"agrA,agrB,agrC,agrD",97.1,98.1,0.65 (0.06-7.37),0.726
+aur,100,100,N/A,Invariant
+bap,0,0,N/A,Invariant
+cap operon,42.9,15,11.44 (2.83-46.2),< 0.001
+chp,60,79.4,0.21 (0.07-0.62),0.005
+"clfA,clfB",25.7,21.5,1.11 (0.38-3.28),0.85
+cna,80,53.3,4.46 (1.52-13.07),0.006
+"coa,vwb",100,98.1,Inf/Zero,Separation
+ebpS,91.4,93.5,0.78 (0.17-3.49),0.744
+"eta,etb",45.7,40.2,1.55 (0.63-3.8),0.343
+"fnbA,fnbB",97.1,95.3,1.67 (0.19-14.77),0.646
+hla/hly,100,93.5,Inf/Zero,Separation
+hlb,100,94.4,Inf/Zero,Separation
+hld,28.6,15,3.12 (0.96-10.14),0.059
+"hlg,lukS-PV,lukF-PV",100,94.4,Inf/Zero,Separation
+hysA,71.4,86,0.3 (0.09-0.98),0.045
+"icaA,icaB,icaC,icaD",97.1,100,Inf/Zero,Separation
+"isdA,isdB,isdC",100,94.4,Inf/Zero,Separation
+lip,100,100,N/A,Invariant
+lipoteichoic acid,100,100,N/A,Invariant
+nuc,100,100,N/A,Invariant
+peptidoglycan,97.1,100,Inf/Zero,Separation
+"psmα, psmβ",0,0,N/A,Invariant
+"saeR,saeS",97.1,94.4,2.02 (0.23-17.38),0.522
+sak,82.9,65.4,3.97 (1.14-13.85),0.031
+sarA,97.1,99.1,0.32 (0.02-5.27),0.426
+"sea-e, seg-sei",97.1,98.1,0.65 (0.06-7.37),0.726
+"sfa,sfb",14.3,6.5,2.77 (0.66-11.7),0.164
+spa,97.1,99.1,0.32 (0.02-5.27),0.426
+tst,8.6,0.9,9.94 (1-98.87),0.05
