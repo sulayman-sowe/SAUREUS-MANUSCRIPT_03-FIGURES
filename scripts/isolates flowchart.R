@@ -133,7 +133,7 @@ digraph study_flow {
         <TR>
           <TD>
             <FONT POINT-SIZE="11">
-              <B>S. aureus isolates collected</B>
+              <B><I>S. aureus</I>  isolates collected</B>
             </FONT>
           </TD>
         </TR>
@@ -468,8 +468,7 @@ digraph study_flow {
         <TR>
           <TD>
             <FONT POINT-SIZE="10">
-              Incomplete genomic /<BR/>
-              clinical data
+              Incomplete genomic data 
             </FONT>
           </TD>
         </TR>
@@ -699,7 +698,7 @@ digraph study_flow {
         <TR>
           <TD>
             <FONT POINT-SIZE="11">
-              <B>S. aureus isolates collected</B>
+              <B><I>S. aureus</I><FONT POINT-SIZE="11">&#160;</FONT>isolates collected</B>
             </FONT>
           </TD>
         </TR>
@@ -908,9 +907,9 @@ j4 [
   color = "grey45",
   fillcolor = "grey45"
 ]
-# ============================================================
+
 # EXCLUSION NODES
-# ============================================================
+
 
 e1 [
   shape = box,
@@ -1067,8 +1066,7 @@ e4 [
       <TR>
         <TD>
           <FONT POINT-SIZE="10">
-            Incomplete genomic /<BR/>
-            clinical data
+            Incomplete genomic data
           </FONT>
         </TD>
       </TR>
@@ -1085,13 +1083,12 @@ e4 [
   >
 ]
 
-# ============================================================
 # MAIN PATHWAY + EXCLUSION BRANCHES
-# ============================================================
 
-# ------------------------------------------------------------
+
+
 # MAIN PATHWAY
-# ------------------------------------------------------------
+
 
 n1 -> j1 [
   color = "grey45",
@@ -1145,9 +1142,9 @@ j4 -> n5 [
 ]
 
 
-# ------------------------------------------------------------
+
 # EXCLUSION BRANCHES
-# ------------------------------------------------------------
+
 
 j1 -> e1 [
   color = "grey45",
@@ -1178,9 +1175,9 @@ j4 -> e4 [
 ]
 
 
-# ------------------------------------------------------------
+
 # FORCE EACH EXCLUSION BOX TO THE RIGHT
-# ------------------------------------------------------------
+
 
 { rank = same; j1; e1 }
 { rank = same; j2; e2 }
@@ -1188,9 +1185,9 @@ j4 -> e4 [
 { rank = same; j4; e4 }
 
 
-# ------------------------------------------------------------
+
 # MAINTAIN EXCLUSION-BOX ORDER
-# ------------------------------------------------------------
+
 
 e1 -> e2 [
   style = invis,

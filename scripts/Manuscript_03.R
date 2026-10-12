@@ -113,17 +113,6 @@ write_xlsx(DATA_03, "DATA_03.xlsx")
 
 # ........................................FIGURES AND TABLES........................
 
-# Table 1: Patient demographics and clinical characteristics
-library(dplyr)
-library(readxl)
-DATASET_MANUSCRIPT_03 <- read_excel("C:/Users/sulsowe/Documents/WORKINGS/DATABASES/DATASET_MANUSCRIPT_03.xlsx")
-  
-Table_01 <- DATASET_MANUSCRIPT_03 %>%
-  filter(Specimen_Type == "INVASIVE")
-
-library(writexl)
-write_xlsx(Table_01, "Table_01.xlsx")
-
 # Table 2: Within-patient isolate matching table 
 
 library(dplyr)
@@ -391,9 +380,9 @@ matched_patients <- patient_st_matrix %>%
 
 master_long_df <- DATA_03 %>%
   filter(Specimen_Type %in% c("INVASIVE", "NON-INVASIVE")) %>%
-  select(Study_ID, Sample_ID, Specimen_Type, all_of(amr_genes)) %>%
+  select(Study_ID, Sample_ID, Specimen_Type, all_of(virulence_genes)) %>%
   pivot_longer(
-    cols = all_of(amr_genes),
+    cols = all_of(virulence_genes),
     names_to = "Gene",
     values_to = "Presence"
   ) %>%
@@ -449,6 +438,58 @@ run_within_patient_glmm <- function(target_gene, working_df) {
   )
 }
 
+#  ALT STEP 2:  For Firth penalized generalized linear mixed models (GLMM)
+library(dplyr)
+library(blme)        # For penalized GLMM (prevents separation crashes)
+library(broom.mixed)
+
+run_within_patient_firth_glmm <- function(target_gene, working_df) {
+  gene_sub <- working_df %>% filter(Gene == target_gene)
+  
+  # Handle invariant features safely (all 0s or all 1s across the subset)
+  if (length(unique(gene_sub$Presence)) < 2) {
+    return(data.frame(Gene = target_gene, Odds_Ratio = "N/A", P_Value = "Invariant"))
+  }
+  
+  # REVIEWER FIX: Use bglmer instead of glmer.
+  # fixef.prior = normal(cov = diag(9, 2)) acts as the penalty (Firth-like adjustment) preventing complete separation from producing infinite estimates.
+  model <- tryCatch({
+    bglmer(
+      Presence ~ Is_Invasive + (1 | Study_ID), 
+      data = gene_sub, 
+      family = binomial(link = "logit"),
+      fixef.prior = normal(cov = diag(9, 2)), # 2 corresponds to Intercept + Is_Invasive
+      control = glmerControl(optimizer = "bobyqa")
+    )
+  }, error = function(e) { NULL })
+  
+  if (is.null(model)) {
+    return(data.frame(Gene = target_gene, Odds_Ratio = "NC", P_Value = "No Conv."))
+  }
+  
+  tidy_model <- suppressWarnings(tryCatch({
+    broom.mixed::tidy(model, conf.int = TRUE, exponentiate = TRUE) %>%
+      filter(term == "Is_Invasive")
+  }, error = function(e) { NULL }))
+  
+  if (is.null(tidy_model) || nrow(tidy_model) == 0) {
+    return(data.frame(Gene = target_gene, Odds_Ratio = "NC", P_Value = "No Conv."))
+  }
+  
+  or       <- round(tidy_model$estimate, 2)
+  ci_lower <- round(tidy_model$conf.low, 2)
+  ci_upper <- round(tidy_model$conf.high, 2)
+  p_val    <- tidy_model$p.value
+  
+  data.frame(
+    Gene = target_gene,
+    Odds_Ratio = paste0(or, " (", ci_lower, "-", ci_upper, ")"),
+    P_Value = if(p_val < 0.001) "< 0.001" else as.character(round(p_val, 3))
+  )
+}
+
+
+
 # Output formatter
 build_output_table <- function(raw_long_data, model_output, title) {
   prev <- raw_long_data %>%
@@ -477,14 +518,14 @@ build_output_table <- function(raw_long_data, model_output, title) {
 # ANALYSIS 1: MATCHED PAIRS ONLY
 
 matched_long_df <- master_long_df %>% filter(Study_ID %in% matched_patients)
-matched_models <- map_df(amr_genes, run_within_patient_glmm, working_df = matched_long_df)
+matched_models <- map_df(virulence_genes,run_within_patient_firth_glmm, working_df = matched_long_df)
 
 analysis1_table <- build_output_table(
   raw_long_data = matched_long_df, 
   model_output = matched_models, 
   title = "Analysis 1: Matched Pairs Only"
 )
-write.csv(analysis1_table, "Table_Analysis1_AMR-genes_Matched_Only.csv", row.names = FALSE)
+write.csv(analysis1_table, "Table_Analysis1-genes_Matched_Only1.csv", row.names = FALSE)
 
 
 # ANALYSIS 2: ALL PATIENT PAIRS (n=35 patients)
